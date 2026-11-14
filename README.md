@@ -5,6 +5,10 @@
   <img src="https://img.shields.io/badge/Desktop-KDE%20Plasma%206%20(Wayland)-1D99F3?style=for-the-badge&logo=kde&logoColor=white" alt="KDE Plasma 6">
   <img src="https://img.shields.io/badge/Base-Debian%2013%20(Trixie)-A80030?style=for-the-badge&logo=debian&logoColor=white" alt="Debian 13 Trixie">
   <img src="https://img.shields.io/badge/Arch-ARM64%20(aarch64)-0091BD?style=for-the-badge&logo=arm&logoColor=white" alt="ARM64">
+  <br/>
+  <a href="https://sourceforge.net/projects/pi-kde-plasma/files/v1.0.0/">
+    <img src="https://img.shields.io/badge/Download%20Image-SourceForge-FF6600?style=for-the-badge&logo=sourceforge&logoColor=white" alt="Download on SourceForge">
+  </a>
 </p>
 
 <p align="center">
