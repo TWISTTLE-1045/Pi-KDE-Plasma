@@ -287,6 +287,12 @@ fi
 rm -f "${ROOTFS_MNT}/usr/bin/qemu-aarch64-static" "${ROOTFS_MNT}/usr/bin/qemu-aarch64"
 
 # Step 7: Unmount cleanly and finalize image
+if [ "${COMPRESS_XZ}" -eq 1 ]; then
+    echo "==> Zero-filling unused rootfs blocks for optimal .img.xz compression..."
+    dd if=/dev/zero of="${ROOTFS_MNT}/zero.fill" bs=16M status=none 2>/dev/null || true
+    rm -f "${ROOTFS_MNT}/zero.fill"
+fi
+
 echo "==> Unmounting chroot filesystems..."
 sync
 umount -lf "${ROOTFS_MNT}/boot/firmware"
