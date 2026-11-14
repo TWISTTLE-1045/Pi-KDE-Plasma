@@ -1,4 +1,4 @@
-# Raspberry Pi OS (Debian 13 Trixie) — Clean KDE Plasma Edition (`arm64`)
+# Pi KDE Plasma — Raspberry Pi OS (Debian 13 Trixie, `arm64`)
 
 <p align="center">
   <img src="https://img.shields.io/badge/OS-Raspberry%20Pi%20OS%20Lite-C51A4A?style=for-the-badge&logo=raspberrypi&logoColor=white" alt="Raspberry Pi OS">
@@ -71,22 +71,22 @@ This project takes a **100% clean, upstream-first approach**:
 
 ### Option A: Building on Windows via WSL2 (Ubuntu / Debian)
 
-Because mounting Linux loop partitions and chrooting into `ext4` with POSIX permissions requires a native Linux filesystem, `build_wsl.sh` automatically syncs the project into your WSL home directory (`~/RaspPi-KDE-Build`), runs the build, and copies the finished `.img` / `.img.xz` back to your Windows `output/` folder.
+Because mounting Linux loop partitions and chrooting into `ext4` with POSIX permissions requires a native Linux filesystem, `build_wsl.sh` automatically syncs the project into your WSL home directory (`~/Pi-KDE-Plasma`), runs the build, and copies the finished `.img` / `.img.xz` back to your Windows `output/` folder.
 
 1. Open your **WSL2 Ubuntu** terminal and run:
    ```bash
-   "/mnt/c/path/to/repo/build_wsl.sh" --compress
+   "/mnt/c/path/to/Pi-KDE-Plasma/build_wsl.sh" --compress
    ```
 2. If a build is interrupted (e.g., network timeout), you can resume from the existing working image without starting over:
    ```bash
-   "/mnt/c/path/to/repo/build_wsl.sh" --resume --compress
+   "/mnt/c/path/to/Pi-KDE-Plasma/build_wsl.sh" --resume --compress
    ```
 
 ### Option B: Building on Native Linux (Ubuntu / Debian Host)
 
 ```bash
-git clone https://github.com/TWISTTLE-1045/RaspPi-Custom-Clean.git
-cd RaspPi-Custom-Clean
+git clone https://github.com/TWISTTLE-1045/Pi-KDE-Plasma.git
+cd Pi-KDE-Plasma
 sudo ./build-image.sh --compress
 ```
 

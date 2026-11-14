@@ -9,7 +9,7 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-WSL_BUILD_DIR="${HOME}/RaspPi-KDE-Build"
+WSL_BUILD_DIR="${HOME}/Pi-KDE-Plasma"
 
 # Resolve Windows output directories dynamically (no hardcoded usernames)
 WIN_PROJECT_OUTPUT="${SCRIPT_DIR}/output"
