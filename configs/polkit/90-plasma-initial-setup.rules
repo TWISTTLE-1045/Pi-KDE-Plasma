@@ -1,0 +1,20 @@
+// =============================================================================
+// Polkit rule allowing the temporary 'oem' / 'kde-initial-system-setup' user
+// to configure language, keyboard, timezone, hostname, Wi-Fi (NetworkManager),
+// and create the primary user account via AccountsService without password prompts.
+// Automatically deleted once plasma-initial-setup finishes.
+// =============================================================================
+polkit.addRule(function(action, subject) {
+    if ((subject.user === "oem" || subject.user === "kde-initial-system-setup" || subject.user === "initial-setup" || subject.user === "plasma-initial-setup") &&
+        (action.id.indexOf("org.freedesktop.accounts.") === 0 ||
+         action.id.indexOf("org.freedesktop.locale1.") === 0 ||
+         action.id.indexOf("org.freedesktop.timedate1.") === 0 ||
+         action.id.indexOf("org.freedesktop.hostname1.") === 0 ||
+         action.id.indexOf("org.freedesktop.NetworkManager.") === 0 ||
+         action.id.indexOf("org.kde.initialsystemsetup.") === 0 ||
+         action.id.indexOf("org.kde.kcontrol.") === 0 ||
+         action.id.indexOf("org.freedesktop.login1.reboot") === 0 ||
+         action.id.indexOf("org.freedesktop.login1.power-off") === 0)) {
+        return polkit.Result.YES;
+    }
+});

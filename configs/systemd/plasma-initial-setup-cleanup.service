@@ -1,0 +1,28 @@
+[Unit]
+Description=Clean up temporary KDE OEM first-boot account after initial setup
+DefaultDependencies=no
+Before=systemd-user-sessions.service sddm.service display-manager.service
+After=local-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c ' \
+    REAL_USER=$(awk -F: "\$3 >= 1000 && \$3 < 60000 && \$1 != \"oem\" && \$1 != \"initial-setup\" && \$1 != \"nobody\" { print \$1; exit }" /etc/passwd); \
+    if [ -f /var/lib/plasma-initial-setup-done ] || [ -n "$REAL_USER" ]; then \
+        rm -f /etc/sddm.conf.d/99-oem-firstboot.conf; \
+        rm -f /etc/polkit-1/rules.d/90-plasma-initial-setup.rules; \
+        rm -f /etc/sudoers.d/90-oem-initial-setup; \
+        rm -f /var/lib/AccountsService/users/oem; \
+        if id -u oem >/dev/null 2>&1; then \
+            pkill -9 -u oem 2>/dev/null || true; \
+            userdel -rf oem 2>/dev/null || true; \
+        fi; \
+        rm -rf /home/oem; \
+        rm -f /var/lib/plasma-initial-setup-done; \
+        systemctl disable plasma-initial-setup-cleanup.service 2>/dev/null || true; \
+    fi \
+'
+RemainAfterExit=no
+
+[Install]
+WantedBy=multi-user.target graphical.target

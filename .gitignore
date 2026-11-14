@@ -1,0 +1,24 @@
+# Build directories, cache & working rootfs
+build/
+cache/
+work/
+mnt/
+output/
+deploy/
+pi-gen/
+
+# Disk images & archives
+*.img
+*.img.xz
+*.img.gz
+*.zip
+*.sha256
+
+# OS / Editor files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
